@@ -9,7 +9,9 @@ description = "Notion daily-plan MCP server for Hermes Agent: today's plan, post
 requires-python = ">=3.11"
 dependencies = [
     "mcp>=1.2.0,<2",
-    "notion-client>=2.2.1",
+    # <2.3: notion-client 2.3+ defaults to the 2025-09-03 data-source API where
+    # databases.query/create no longer exist; this code targets the classic API.
+    "notion-client>=2.2.1,<2.3",
 ]
 
 [project.scripts]
