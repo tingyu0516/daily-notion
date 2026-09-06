@@ -1,6 +1,8 @@
 """Smoke test: launch the MCP server over stdio and list its tools. No Notion token needed."""
 
 import asyncio
+import sys
+from pathlib import Path
 
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
@@ -17,11 +19,14 @@ EXPECTED = {
     "write_review",
 }
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
 
 async def main() -> int:
     params = StdioServerParameters(
-        command=r"E:\AIproject\AI-daily\.venv\Scripts\python.exe",
+        command=sys.executable,
         args=["-m", "daily_notion.server"],
+        cwd=str(REPO_ROOT),
     )
     async with stdio_client(params) as (read, write):
         async with ClientSession(read, write) as session:

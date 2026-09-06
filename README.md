@@ -38,7 +38,7 @@ setup 是幂等的：数据库 id 已写入 .env 就不会再建。建好后你�
 ```yaml
 mcp_servers:
   daily-notion:
-    command: "E:/AIproject/AI-daily/.venv/Scripts/python.exe"
+    command: "<仓库路径>/.venv/Scripts/python.exe"   # Windows；Linux/macOS 用 .venv/bin/python
     args: ["-m", "daily_notion.server"]
     idle_timeout_seconds: 900   # 空闲 15 分钟回收，下次调用自动重启
 ```
