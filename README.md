@@ -33,7 +33,7 @@ setup 是幂等的：数据库 id 已写入 .env 就不会再建。建好后你�
 
 ### 3. 接入 Hermes
 
-把 `skill\daily-notion\` 整个目录复制到 Hermes 的 skills 目录（`hermes skills list` 可确认加载），并在 Hermes 配置里加：
+把 `skill\` 下两个目录（`daily-notion`、`task-decompose`）都复制到 Hermes 的 skills 目录（`hermes skills list` 可确认加载），并在 Hermes 配置里加：
 
 ```yaml
 mcp_servers:
@@ -77,7 +77,8 @@ daily_notion/
   store.py     Notion 数据访问层
   server.py    FastMCP server（9 个工具，纯数据操作）
   setup.py     初始化脚本（建库 + 回写 .env）
-skill/daily-notion/SKILL.md   Hermes 技能：早报/汇报/提醒/复盘/兜底全部流程
+skill/daily-notion/SKILL.md    Hermes 技能：早报/汇报/提醒/复盘/兜底全部流程
+skill/task-decompose/SKILL.md  Hermes 技能：拷问式任务拆解（一次一问、附推荐答案）
 scripts/smoke_test_mcp.py     本地冒烟测试（列出工具，无需 Notion token）
 ```
 
